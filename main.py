@@ -3,7 +3,7 @@ from window import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 import sys
-
+#just a text
 class Calci(QMainWindow):
     def __init__(self):
         super().__init__()
