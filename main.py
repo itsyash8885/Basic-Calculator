@@ -48,19 +48,17 @@ class Calci(QMainWindow):
         print("operate-> self.stack",self.stack)
         self.curop=curop
 
-
-
-
-            
-
     def equals(self,check):
         if check=="butcall":
-            self.stack[0]=self.curop(self.stack[0],self.stack[-1])
-            print("equals butcall-> self.stack before pop",self.stack)
-            self.stack.pop()
-            print("equals butcall-> self.stack after pop",self.stack)
-            self.display()
-            self.curop=None
+            try:
+                self.stack[0]=self.curop(self.stack[0],self.stack[-1])
+                print("equals butcall-> self.stack before pop",self.stack)
+                self.stack.pop()
+                print("equals butcall-> self.stack after pop",self.stack)
+                self.display()
+                self.curop=None
+            except ZeroDivisionError:
+                self.clear()
 
         if check=="funcall":
             self.stack[0]=self.curop(self.stack[0],self.stack[-1])
