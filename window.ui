@@ -46,7 +46,7 @@ color: rgb(255, 255, 255);</string>
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -71,7 +71,7 @@ color: rgb(255, 255, 255);</string>
      <string>7</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="pushButton_8">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -96,7 +96,7 @@ color: rgb(255, 255, 255);</string>
      <string>8</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="pushButton_9">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -221,7 +221,7 @@ color: rgb(255, 255, 255);</string>
      <string>1</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -246,7 +246,7 @@ color: rgb(255, 255, 255);</string>
      <string>2</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
       <x>260</x>
