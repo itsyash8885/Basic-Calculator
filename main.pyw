@@ -48,12 +48,15 @@ class Calci(QMainWindow):
 
     #function for handling the operators    
     def operate(self,curop):
+        self.decicounter=0
+        self.deciactive=False
         if self.curop:
            self.equals("funcall")
 
         self.stack.append(0)
         print("operate-> self.stack",self.stack)
         self.curop=curop
+        
 
     #function for calculating result
     def equals(self,check):
@@ -82,7 +85,7 @@ class Calci(QMainWindow):
     #function for clearing the screen and getting back to null state
     def clear(self):
         self.stack = [0]
-        self.decicounter = 1
+        self.decicounter = 0
         self.deciactive = False
         self.curop=None
         self.ui.label_display.setText("0")
