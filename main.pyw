@@ -69,18 +69,27 @@ class Calci(QMainWindow):
                 print("equals butcall-> self.stack after pop",self.stack)
                 self.display()
                 self.curop=None
-            except ZeroDivisionError:
+            except (ZeroDivisionError, TypeError):
                 self.clear()
         #equals based on operation pressed
+        
         if check=="funcall":
-            self.stack[0]=self.curop(self.stack[0],self.stack[-1])
-            print("equals-> self.stack before pop",self.stack)
-            self.stack.pop()
-            print("equals-> self.stack after pop",self.stack)
+            try:
+
+                self.stack[0]=self.curop(self.stack[0],self.stack[-1])
+                print("equals-> self.stack before pop",self.stack)
+                self.stack.pop()
+                print("equals-> self.stack after pop",self.stack)
+            except ZeroDivisionError:
+                self.clear()
 
     #function to display numbers 
     def display(self):
-        self.ui.label_display.setText(f"{self.stack[-1]}")
+        if self.decicounter>0:
+            self.ui.label_display.setText("%.4f"%self.stack[-1])
+        else:
+            self.ui.label_display.setText(f"{self.stack[-1]}")
+
     
     #function for clearing the screen and getting back to null state
     def clear(self):
