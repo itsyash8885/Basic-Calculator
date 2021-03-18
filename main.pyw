@@ -13,7 +13,7 @@ class Calci(QMainWindow):
         #INitializing and setting GUI
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
-
+        ################################################################################
         #Constraints
         self.stack = [0]
         self.deciactive = False
