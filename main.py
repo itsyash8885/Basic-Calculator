@@ -1,21 +1,26 @@
+#Importing Modules
 from PyQt5.QtWidgets import QMainWindow
 from window import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 import sys
 import operator
-#just a text
+
+#Class for handling operations and GUI
 class Calci(QMainWindow):
     def __init__(self):
         super().__init__()
+        #INitializing and setting GUI
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
+
+        #Constraints
         self.stack = [0]
         self.deciactive = False
         self.decicounter = 0
         self.curop=None
-        self.nextop=None
-        self.ready=True
+        
+        #Connecting buttons to slots
         for i in range(0,10):
             getattr(self.ui,"pushButton_%d"%i).pressed.connect(lambda n=i: self.inputnum(n))
         
@@ -29,6 +34,7 @@ class Calci(QMainWindow):
         self.ui.pushButton_div.pressed.connect(lambda: self.operate(operator.truediv))
         self.ui.pushButton_eq.pressed.connect(lambda: self.equals("butcall"))
     
+    #function for inputing the numbers
     def inputnum(self,num):
         if self.stack[-1]<999999999 and self.deciactive == False:
             self.stack[-1] = self.stack[-1]*10 + num
@@ -39,7 +45,8 @@ class Calci(QMainWindow):
             
         print("stack changed in inputnum function to ",self.stack)
         self.display()
-        
+
+    #function for handling the operators    
     def operate(self,curop):
         if self.curop:
            self.equals("funcall")
@@ -48,7 +55,9 @@ class Calci(QMainWindow):
         print("operate-> self.stack",self.stack)
         self.curop=curop
 
+    #function for calculating result
     def equals(self,check):
+        #equals based on button pressed
         if check=="butcall":
             try:
                 self.stack[0]=self.curop(self.stack[0],self.stack[-1])
@@ -59,20 +68,18 @@ class Calci(QMainWindow):
                 self.curop=None
             except ZeroDivisionError:
                 self.clear()
-
+        #equals based on operation pressed
         if check=="funcall":
             self.stack[0]=self.curop(self.stack[0],self.stack[-1])
             print("equals-> self.stack before pop",self.stack)
             self.stack.pop()
             print("equals-> self.stack after pop",self.stack)
 
-
-
-
-
+    #function to display numbers 
     def display(self):
         self.ui.label_display.setText(f"{self.stack[-1]}")
     
+    #function for clearing the screen and getting back to null state
     def clear(self):
         self.stack = [0]
         self.decicounter = 1
@@ -80,11 +87,12 @@ class Calci(QMainWindow):
         self.curop=None
         self.ui.label_display.setText("0")
         self.display()
-        
+
+    #function for checking if the decimal is pressed    
     def decipressed(self):
         self.deciactive = True
 
-
+    #function for deleting consecutive numbers(backspace)
     def back(self):
         if self.deciactive == False:
             self.stack[-1] = int(self.stack[-1]//10)
@@ -106,7 +114,7 @@ class Calci(QMainWindow):
                 self.deciactive = False
 
         self.display()
-
+#main 
 if __name__=="__main__":
     app=QtWidgets.QApplication(sys.argv)
     
