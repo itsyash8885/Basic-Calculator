@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QMainWindow
 import sys
 import operator
 
-#Class for handling operations and GUI
+#Class for handling operations and GUI--
 class Calci(QMainWindow):
     def __init__(self):
         super().__init__()
